@@ -1,74 +1,76 @@
-import { Image, StyleSheet, Platform } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { Image, StyleSheet, Platform } from "react-native";
+import { HelloWave } from "@/components/HelloWave";
+import ParallaxScrollView from "@/components/ParallaxScrollView";
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import HorizontalCard from "@/components/HorizontalCard";
 
 export default function HomeScreen() {
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
+      headerBackgroundColor={{ light: "#000", dark: "#000" }}
       headerImage={
         <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+          source={require("@/assets/images/cutlery.png")}
+          style={styles.cutleryLogo}
         />
-      }>
+      }
+    >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
+        {/* Aplicamos el color negro al texto */}
+        <ThemedText type="title" style={styles.titleText}>
+          Cooking time!
         </ThemedText>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
+
+      <HorizontalCard
+        imageSource={require("@/assets/images/react-logo.png")}
+        title={"Take a sit"}
+        description={
+          "If you need an intuitive app for your waiters and cooks, this is what you need."
+        }
+      />
+
+      <HorizontalCard
+        imageSource={require("@/assets/images/react-logo.png")}
+        title={"Why use Fast Service?"}
+        description={
+          "Is a very simple and intuitive app, which will help you to provide a fast and efficient service."
+        }
+      />
+
+      <HorizontalCard
+        imageSource={require("@/assets/images/no-paper.png")}
+        title={"Help the environment"}
+        description={
+          "Forget about wasting paper with orders and do yourself and the environment a favor by using our app. Take advantage of it."
+        }
+      />
     </ParallaxScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     gap: 8,
+    backgroundColor: "#fff",
+  },
+  titleText: {
+    color: "#000", // Color del texto negro
+    fontSize: 24, // Tamaño de la fuente
+    fontWeight: "bold", // Negrita para mayor énfasis
   },
   stepContainer: {
     gap: 8,
     marginBottom: 8,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
+  cutleryLogo: {
+    height: 300,
+    width: 300,
+    top: 0,
     left: 0,
-    position: 'absolute',
+    position: "absolute",
   },
 });
